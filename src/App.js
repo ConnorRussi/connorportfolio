@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import "./css/App.css";
-import "./LogoLoop.js";
 import LogoLoop from "./LogoLoop";
 import Threads from "./Threads";
 import ProjectCard from "./ProjectCard";

@@ -1,5 +1,5 @@
 // ProjectCard component for rotating images on hover
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./css/App.css";
 function ProjectCard({ project }, cycleInterval = 5000, slideDuration = 1000) {
     const [imgIdx, setImgIdx] = useState(0);
