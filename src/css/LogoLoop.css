@@ -1,0 +1,34 @@
+/* Add left margin to the first item in each list to ensure even spacing at the loop point */
+.logoloop__item--first {
+  margin-left: var(--logoloop-gap, 32px);
+}
+.logoloop {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  padding: 16px 0;
+}
+
+.logoloop__track {
+  display: flex;
+  align-items: center;
+  will-change: transform;
+}
+
+.logoloop__list {
+  display: flex;
+  gap: var(--logoloop-gap, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.logoloop__item img {
+  height: var(--logoloop-logoHeight, 40px);
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 6px;
+}
