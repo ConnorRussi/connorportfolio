@@ -238,6 +238,64 @@ p {
   padding: 0 20px;
 }
 
+/* Responsive navbar and mobile adjustments */
+@media (max-width: 768px) {
+  .App-Navbar {
+    top: 12px;
+    padding: 8px 10px;
+    width: calc(100% - 24px);
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: none;
+    border-radius: 16px;
+  }
+
+  .Nav-Links {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .Nav-Links li a {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    display: inline-block;
+    white-space: nowrap; /* keep short labels on one line */
+  }
+
+  .Section-Heading-Content {
+    width: 85%;
+  }
+}
+
+@media (max-width: 420px) {
+  .App-Navbar {
+    top: 10px;
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+
+  .Nav-Links {
+    gap: 8px;
+  }
+
+  .Nav-Links li a {
+    font-size: 0.84rem;
+    padding: 4px 6px;
+  }
+
+  /* Allow the nav to become a multi-row block and reduce visual weight */
+  .Nav-Links {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  /* Reduce the main heading size on very small screens */
+  .Section-Heading-Content h1 {
+    font-size: 2.2rem;
+  }
+}
+
 .Experience-Card {
   display: flex;
   align-items: center;
