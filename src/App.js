@@ -58,18 +58,18 @@ const Projects = [
     // downloadLink: "https://vreducationalgame.example.com",
   },
   {
-    title: "Single Core Y-86 Sequential architecture CPU",
-    images: [require("./Images/Cpu/cpu1.png"), require("./Images/Cpu/cpu2.png"), require("./Images/Cpu/cpu3.png")],
-    description: "Built the Fetch, Execute, and PC update stages of a Y-86 CPU while collaborating on the Memory and Decode stages. Designed test cases by breaking complex operations into simple problems, ensuring correctness and supporting smooth instruction conversion into Y-86. Focused on modular design and clear, maintainable architecture throughout the project.",
-    technologies: "Computer Architecture, WaveDrom, Y-86 Instruction Set",
-  },
-  {
     title: "Cards against time (TX Game Jam)",
     images: [require("./Images/TXGJ/c1.png"), require("./Images/TXGJ/c2.png"), require("./Images/TXGJ/c3.png"), require("./Images/TXGJ/c4.png"), require("./Images/TXGJ/c5.png")],
     description: "Developed a single-player game under a strict 48-hour deadline, requiring clear communication and effective collaboration to deliver a complete, playable experience on time. The team intentionally divided work by subsystem, using a front-end and back-end style separation to enable parallel development while minimizing merge conflicts. Responsibilities were clearly defined early, allowing me and my partner to work independently before integrating components into a cohesive final build within the limited timeframe.",
     technologies: "Unity, C#, Game Development, Agile Development",
     gitHubLink: "https://github.com/1RlyBadDay/TXGJ_repo",
     deployedLink: "https://thecripple1.itch.io/cards-against-times",
+  },
+  {
+    title: "Single Core Y-86 Sequential architecture CPU",
+    images: [require("./Images/Cpu/cpu1.png"), require("./Images/Cpu/cpu2.png"), require("./Images/Cpu/cpu3.png")],
+    description: "Built the Fetch, Execute, and PC update stages of a Y-86 CPU while collaborating on the Memory and Decode stages. Designed test cases by breaking complex operations into simple problems, ensuring correctness and supporting smooth instruction conversion into Y-86. Focused on modular design and clear, maintainable architecture throughout the project.",
+    technologies: "Computer Architecture, WaveDrom, Y-86 Instruction Set",
   },
   {
     title: "Sherwood",
