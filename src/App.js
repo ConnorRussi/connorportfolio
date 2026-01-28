@@ -20,9 +20,18 @@ import reactImage from "./Images/TechImages/react.svg";
 import unity from "./Images/TechImages/unity.svg";
 import ocaml from "./Images/TechImages/ocaml.svg";
 import html from "./Images/TechImages/html.svg";
+import cl from "./Images/TechImages/CL.png";
 import resumePDF from "./Russi_Connor_Resume.pdf";
 
 const Projects = [
+  {
+    title: "AI-Powered Job Application Tracker",
+    images: [require("./Images/lora/loraAI.png"), require("./Images/lora/loraAI2.png")],
+    technologies: "React, Node.js, Express, JavaScript, HTML, CSS, Gmail API, Fast API, CloudFlare, Uvicorn, LoRA Fine-Tuning",
+    description: "AI-powered full-stack job tracking application that parses real-world Gmail application emails using a fine-tuned LLaMA model with LoRA. The system extracts structured job data from noisy, unstructured text, resolves role variations using similarity-based scoring, and automatically updates application status across the hiring pipeline via a FastAPI microservice integrated with a React and Node.js web app.",
+    gitHubLink: "https://github.com/ConnorRussi/LoraAI",
+    deployedLink: "https://loraai.onrender.com",
+  },
   {
     title: "Panda Express POS Ecosystem",
     images: [
@@ -41,7 +50,7 @@ const Projects = [
   },
   {
     title: "Saloon Simulator VR Game",
-    images: [require("./Images/unityTemp.png")],
+    images: [require("./Images/Saloon/VRG1.png"), require("./Images/Saloon/VRG2.png"), require("./Images/Saloon/VRG3.png")],
     description: "Saloon Simulator is a VR experience for the Oculus Quest, built in Unity with C#. I developed a modular system using classes for interactive objects, enabling new items to be added quickly while maintaining consistent functionality. I applied Human-Computer Interaction principles from *The Design of Everyday Things* by Don Norman to ensure experiences are understandable and intuitive, demonstrating how VR forces designers to carefully consider user experience and interaction. This project is still under development.",
     technologies: "Unity, C#, XR Development, Human-Computer Interaction",
     gitHubLink: "https://github.com/ConnorRussi/Saloon_Simulator",
@@ -121,6 +130,10 @@ const technologies = [
   {
     name: "C++",
     img: cpp,
+  },
+  {
+    name: "Cloudflare",
+    img: cl,
   },
   {
     name: "Css",
