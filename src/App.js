@@ -43,7 +43,7 @@ const Projects = [
       require("./Images/panda/pandaMain.png"),
       require("./Images/panda/pandaLogin.png"),
     ],
-    description: "Full-stack restaurant management app. Features include a Kiosk with Gemini-powered assistant, cashier workflow, inventory, menu, and employee management, and real-time charts for branch performance, menu, and kitchen tracking. Feel free to explore globally deployed application using these logins (Currently Down): \n \n Manager: username: testMan, password: password. \n EmployeeLogin: username: testUser, password: password. \n \n As of now, the database linked to the deployed app has been taken down because it was hosted on a university-provided database that was decommissioned after the course concluded. As a result, some functionality may be limited.",
+    description: "Full-stack restaurant management app. Features include a Kiosk with Gemini-powered assistant, cashier workflow, inventory, menu, and employee management, and real-time charts for branch performance, menu, and kitchen tracking. Feel free to explore globally deployed application using these logins: \n \n Manager: username: testMan, password: password. \n EmployeeLogin: username: testUser, password: password.",
     technologies: "React, Node.js, Express, SQL, JavaScript, HTML, CSS, Gemini API, REST APIs, Agile Development",
     gitHubLink: "https://github.com/CSCE-331-Fall-25/CSCE331_Project_3_Team34",
     deployedLink: "https://csce331-project-3-team34-dueo.onrender.com",
