@@ -4,6 +4,7 @@ import LogoLoop from "./LogoLoop";
 import Threads from "./Threads";
 import ProjectCard from "./ProjectCard";
 import emailjs from "emailjs-com";
+import { Analytics } from "@vercel/analytics/react";
 
 
 import cSharp from "./Images/TechImages/C-Sharp_Logo.svg";
@@ -328,6 +329,7 @@ function App() {
         </form>
       </section>
 
+      <Analytics />
     </div>
   );
 }
