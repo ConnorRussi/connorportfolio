@@ -238,6 +238,154 @@ p {
   padding: 0 20px;
 }
 
+.Professional-Experience-Card {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(204, 0, 1, 0.18), transparent 32%),
+    #23272a;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.34);
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+}
+
+.Professional-Experience-Card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: #cc0001;
+}
+
+.Professional-Experience-Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.Professional-Experience-Card .Experience-Title {
+  margin: 0;
+}
+
+.Professional-Experience-LogoFrame {
+  align-items: center;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  padding: 12px;
+  width: 190px;
+  flex: 0 0 190px;
+}
+
+.Professional-Experience-Logo {
+  display: block;
+  height: auto;
+  max-height: 42px;
+  width: 100%;
+}
+
+.Professional-Experience-Company {
+  margin-top: 4px;
+  color: var(--HeadingColor);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.Professional-Experience-Summary {
+  color: var(--ParagraphColor);
+  font-size: 1.04rem;
+  line-height: 1.65;
+  margin: 0 0 24px;
+  max-width: 780px;
+}
+
+.Professional-Experience-Metrics {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 24px;
+}
+
+.Professional-Experience-Metric {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.Professional-Experience-Metric span {
+  color: #ffffff;
+  display: block;
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.Professional-Experience-Metric small {
+  color: var(--ParagraphColor);
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+.Professional-Experience-Highlights {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  color: var(--ParagraphColor);
+  line-height: 1.55;
+}
+
+.Professional-Experience-Highlight {
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.Professional-Experience-Highlight h4 {
+  color: var(--HeadingColor);
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.Professional-Experience-Highlight p {
+  color: var(--ParagraphColor);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.Professional-Experience-Technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.Professional-Experience-Technologies span {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--ButtonBackground);
+  color: var(--ButtonTextColor);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .Experience-Card {
   display: flex;
   align-items: center;
@@ -308,6 +456,30 @@ p {
   color: var(--ParagraphColor);
   font-size: 1rem;
   margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+  .Professional-Experience-Card {
+    margin-right: 20px;
+    margin-left: 20px;
+    padding: 24px;
+  }
+
+  .Professional-Experience-Header,
+  .Experience-Header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .Professional-Experience-LogoFrame {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .Professional-Experience-Metrics,
+  .Professional-Experience-Highlights {
+    grid-template-columns: 1fr;
+  }
 }
 
 .Technologies {

@@ -22,6 +22,20 @@ import unity from "./Images/TechImages/unity.svg";
 import ocaml from "./Images/TechImages/ocaml.svg";
 import cl from "./Images/TechImages/CL.png";
 import html from "./Images/TechImages/html.svg";
+import claude from "./Images/TechImages/claude-icon.svg";
+import fastApi from "./Images/TechImages/fastapi-icon.svg";
+import gitLab from "./Images/TechImages/gitlab-icon.svg";
+import huggingFace from "./Images/TechImages/hugging-face-icon.svg";
+import mcp from "./Images/TechImages/MCP.svg";
+import vercel from "./Images/TechImages/vercel-mono.svg";
+import awsBedrock from "./Images/TechImages/bedrock-aws.svg";
+import githubCopilot from "./Images/TechImages/github-copilot-mono.svg";
+import langChain from "./Images/TechImages/langchain-corporate.svg";
+import langSmith from "./Images/TechImages/langsmith-langchain.svg";
+import ollama from "./Images/TechImages/ollama-mono.svg";
+import openAI from "./Images/TechImages/openai-light.svg";
+import render from "./Images/TechImages/render.svg";
+import halliburtonLogo from "./Images/exp/halliburton.svg";
 import resumePDF from "./Russi_Connor_Resume.pdf";
 
 const Projects = [
@@ -81,7 +95,39 @@ const Projects = [
   }
 ];
 
-const Experience = [
+const professionalExperience = {
+  title: "Gen-AI Platform Engineer Intern",
+  company: "Halliburton",
+  duration: "May 2026 - August 2026",
+  logo: halliburtonLogo,
+  summary:
+    "Built on Halliburton's internal Gen-AI platform, helping turn company knowledge, developer workflows, and generated code into agentic systems that could be evaluated, trusted, and improved over time.",
+  highlights: [
+    {
+      title: "Agentic Platform Work",
+      detail:
+        "Designed graph-based agent behavior for planning, evidence gathering, tool calls, and grounded technical responses across internal engineering use cases.",
+    },
+    {
+      title: "Measured AI Quality",
+      detail:
+        "Created evaluation loops that compared accuracy, retrieval quality, latency, and token cost so changes could be judged by data rather than guesswork.",
+    },
+    {
+      title: "Safer Generated Code",
+      detail:
+        "Built validation steps around generated code, combining LLM-assisted cleanup with sandboxed execution before code reached users.",
+    },
+  ],
+  metrics: [
+    { value: "78%", label: "lower token usage" },
+    { value: "50%", label: "faster responses" },
+    { value: "23.5%", label: "higher evaluated quality" },
+  ],
+  technologies: ["LangChain", "LangGraph", "MCP", "RAG", "LangSmith", "AI Agents", "Code Validation"],
+};
+
+const leadershipActivities = [
  
   {
     title: "Kids Room Lead",
@@ -129,68 +175,120 @@ const Experience = [
 ];
 const technologies = [
   {
-    name: "C++",
-    img: cpp,
+    name: "React",
+    img: reactImage,
   },
   {
-    name: "Cloudflare",
-    img: cl,
-  },
-  {
-    name: "Css",
-    img: css,
-  },
-  {
-    name: "HTML",
-    img: html,
-  },
-  {
-    name: "C#",
-    img: cSharp,
-  },
-  {
-    name: "GitHub",
-    img: gitH,
-  },
-  {
-    name: "Htmx",
-    img: htmx,
+    name: "OpenAI",
+    img: openAI,
   },
   {
     name: "JavaScript",
     img: js,
   },
   {
+    name: "SQL",
+    img: sql,
+  },
+  {
+    name: "LangChain",
+    img: langChain,
+  },
+  {
     name: "Python",
     img: python,
   },
   {
-    name: "Meta",
-    img: meta,
+    name: "GitHub",
+    img: gitH,
+  },
+  {
+    name: "Claude",
+    img: claude,
   },
   {
     name: "Node.js",
     img: node,
   },
   {
-    name: "SQL",
-    img: sql,
+    name: "C++",
+    img: cpp,
   },
   {
-    name: "React",
-    img: reactImage,
+    name: "FastAPI",
+    img: fastApi,
   },
   {
     name: "Unity",
     img: unity,
   },
   {
-    name: "Ocaml",
-    img: ocaml,
+    name: "Model Context Protocol (MCP)",
+    img: mcp,
+  },
+  {
+    name: "HTML",
+    img: html,
+  },
+  {
+    name: "AWS Bedrock",
+    img: awsBedrock,
+  },
+  {
+    name: "CSS",
+    img: css,
   },
   {
     name: "Java",
     img: require("./Images/TechImages/java.png"),
+  },
+  {
+    name: "Hugging Face",
+    img: huggingFace,
+  },
+  {
+    name: "C#",
+    img: cSharp,
+  },
+  {
+    name: "Vercel",
+    img: vercel,
+  },
+  {
+    name: "Ollama",
+    img: ollama,
+  },
+  {
+    name: "Cloudflare",
+    img: cl,
+  },
+  {
+    name: "GitLab",
+    img: gitLab,
+  },
+  {
+    name: "Meta",
+    img: meta,
+  },
+  {
+    name: "GitHub Copilot",
+    img: githubCopilot,
+  },
+  {
+    name: "OCaml",
+    img: ocaml,
+  },
+  {
+    name: "LangSmith",
+    img: langSmith,
+  },
+  {
+    name: "HTMX",
+    img: htmx,
+  },
+  {
+    name: "Render",
+    img: render,
   }
   
 ];
@@ -240,8 +338,9 @@ function App() {
         <nav>
           <ul className="Nav-Links">
             <li><a href="#about">About Me</a></li>
-            <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#leadership">Leadership</a></li>
             <li><a href="#contact">Contact Me</a></li>
             <li><a href={resumePDF} target="_blank" rel="noopener noreferrer" className="Resume-Button">Resume</a></li>
           </ul>
@@ -274,6 +373,49 @@ function App() {
 
       </section>
 
+      {/* Professional experience */}
+      <section className="Section-Experience" id="experience">
+        <div className="Section-TopHeading"><h2>Professional Experience</h2></div>
+        <article className="Professional-Experience-Card">
+          <div className="Professional-Experience-Header">
+            <div className="Professional-Experience-LogoFrame">
+              <img
+                src={professionalExperience.logo}
+                alt={`${professionalExperience.company} logo`}
+                className="Professional-Experience-Logo"
+              />
+            </div>
+            <div className="Experience-TitleGroup">
+              <h3 className="Experience-Title">{professionalExperience.title}</h3>
+              <span className="Professional-Experience-Company">{professionalExperience.company}</span>
+            </div>
+            <span className="Experience-Duration">{professionalExperience.duration}</span>
+          </div>
+          <p className="Professional-Experience-Summary">{professionalExperience.summary}</p>
+          <div className="Professional-Experience-Metrics" aria-label="Internship impact metrics">
+            {professionalExperience.metrics.map((metric) => (
+              <div className="Professional-Experience-Metric" key={metric.label}>
+                <span>{metric.value}</span>
+                <small>{metric.label}</small>
+              </div>
+            ))}
+          </div>
+          <div className="Professional-Experience-Highlights">
+            {professionalExperience.highlights.map((highlight) => (
+              <div className="Professional-Experience-Highlight" key={highlight.title}>
+                <h4>{highlight.title}</h4>
+                <p>{highlight.detail}</p>
+              </div>
+            ))}
+          </div>
+          <div className="Professional-Experience-Technologies" aria-label="Technologies used">
+            {professionalExperience.technologies.map((technology) => (
+              <span key={technology}>{technology}</span>
+            ))}
+          </div>
+        </article>
+      </section>
+
       {/* Projects */}
       
       <section className="Section-Projects" id="projects">
@@ -286,12 +428,12 @@ function App() {
      
       </section>
 
-      {/* experience */}
-      <section className="Section-Experience " id="experience">
-        <div className="Section-TopHeading"><h2>Experience & Leadership</h2></div>
+      {/* Leadership and activities */}
+      <section className="Section-Experience" id="leadership">
+        <div className="Section-TopHeading"><h2>Leadership &amp; Activities</h2></div>
         <div className = "Experience">
-          {Experience.map((exp, idx) => (
-            <div className="Experience-Card" key={idx}>
+          {leadershipActivities.map((exp) => (
+            <div className="Experience-Card" key={`${exp.company}-${exp.title}`}>
               <img
                 src={exp.image}
                 alt={exp.title}
