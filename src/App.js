@@ -105,7 +105,7 @@ const professionalExperience = {
   duration: "May 2026 — August 2026",
   logo: halliburtonLogo,
   summary:
-    "I worked on Halliburton's internal Gen-AI platform, focusing on the less flashy parts that make agents useful in practice: reliable retrieval, measured quality, efficient context, and safe code execution.",
+    "I worked on an internal Gen-AI agent at Halliburton, focusing on the less flashy parts that make agents useful in practice: reliable retrieval, measured quality, efficient context, and safe code execution.",
   highlights: [
     {
       title: "Agent Architecture",
