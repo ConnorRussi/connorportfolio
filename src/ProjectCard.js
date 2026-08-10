@@ -1,149 +1,67 @@
-// ProjectCard component for rotating images on hover
-import React, { useState, useRef } from "react";
-import "./css/App.css";
-function ProjectCard({ project }, cycleInterval = 5000, slideDuration = 1000) {
-    const [imgIdx, setImgIdx] = useState(0);
-    const [animating, setAnimating] = useState(false);
-    const intervalRef = useRef(null);
+import React, { useState } from "react";
 
-    const startRotation = () => {
-        if (intervalRef.current) return; // Prevent multiple intervals
-        intervalRef.current = setInterval(() => {
-            setAnimating(true);
+function ProjectCard({ project }) {
+  const [imageIndex, setImageIndex] = useState(0);
+  const imageCount = project.images.length;
 
-            setTimeout(() => {
-                setAnimating(false);
-                setImgIdx((prev) => (prev + 1) % project.images.length);
-            }, slideDuration);
-        }, cycleInterval);
-    };
+  const showPreviousImage = () => {
+    setImageIndex((currentIndex) => (currentIndex - 1 + imageCount) % imageCount);
+  };
 
-    const stopRotation = () => {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-        setAnimating(false);
-    };
+  const showNextImage = () => {
+    setImageIndex((currentIndex) => (currentIndex + 1) % imageCount);
+  };
 
-    const handleMouseEnter = () => {
-        if (!intervalRef.current) {
-            startRotation();
-        }
-    };
+  return (
+    <article className="Project-Card">
+      <figure className="Project-Media">
+        <img
+          src={project.images[imageIndex]}
+          alt={`${project.title} screenshot ${imageIndex + 1} of ${imageCount}`}
+          width="960"
+          height="600"
+          loading="lazy"
+        />
+        {imageCount > 1 ? (
+          <div className="Project-Gallery-Controls">
+            <button type="button" onClick={showPreviousImage} aria-label={`Show previous ${project.title} screenshot`}>
+              ←
+            </button>
+            <span aria-live="polite">{imageIndex + 1} / {imageCount}</span>
+            <button type="button" onClick={showNextImage} aria-label={`Show next ${project.title} screenshot`}>
+              →
+            </button>
+          </div>
+        ) : null}
+      </figure>
 
-    const handleMouseLeave = () => {
-        stopRotation();
-    };
+      <div className="Project-Content">
+        <p className="Project-Eyebrow">{project.eyebrow}</p>
+        <h3>{project.title}</h3>
+        <p className="Project-Description">{project.description}</p>
+        {project.note ? <p className="Project-Note">{project.note}</p> : null}
 
-    const handleCardClick = (e) => {
-        // Prevent navigation if a link inside the card is clicked
-        if (e.target.tagName === "A") return;
+        <ul className="Project-Tech" aria-label={`${project.title} technologies`}>
+          {project.technologies.split(",").map((technology) => {
+            const name = technology.trim();
+            return <li key={name}>{name}</li>;
+          })}
+        </ul>
 
-        // Open GitHub link in a new tab if it exists
-        if (project.gitHubLink) {
-            window.open(project.gitHubLink, "_blank");
-        }
-    };
-
-    const bottomImage = project.images[imgIdx];
-    const topImage = project.images[(imgIdx + 1) % project.images.length];
-
-    return (
-        <div
-            className="Project-Card"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onClick={handleCardClick} // Added click handler for the card
-        >
-            <div
-                className={`Image-Wrapper slide ${animating ? "animating" : ""}`}
-                style={{
-                    position: "relative",
-                    overflow: "hidden",
-                    width: "100%",
-                    height: "100%",
-                    minHeight: "400px",
-                }}
-            >
-                <img
-                    key={bottomImage}
-                    src={bottomImage}
-                    alt={project.title}
-                    className="bottom"
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        transition: `transform ${slideDuration}ms ease-in-out`,
-                        transform: animating ? "translateX(-100%)" : "translateX(0)",
-                    }}
-                />
-                <img
-                    key={topImage}
-                    src={topImage}
-                    alt={project.title}
-                    className="top"
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        transition: `transform ${slideDuration}ms ease-in-out`,
-                        transform: animating ? "translateX(0)" : "translateX(100%)",
-                    }}
-                />
-            </div>
-            <div className="Project-Content">
-                <h3>{project.title}</h3>
-                <p className="Project-Description">
-                    {project.description.split("\n").map((line, idx) => (
-                        <span key={idx}>
-                            {line}
-                            <br />
-                        </span>
-                    ))}
-                </p>
-                <div className="Project-Tech">
-                    {project.technologies.split(",").map((tech, idx) => (
-                        <span key={idx} className="Tech-Tag">{tech.trim()}</span>
-                    ))}
-                </div>
-                <div className="Project-Links">
-                    {project.gitHubLink && (
-                        <a
-                            href={project.gitHubLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="Project-Button"
-                        >
-                            GitHub
-                        </a>
-                    )}
-                    {project.deployedLink && (
-                        <a
-                            href={project.deployedLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="Project-Button"
-                        >
-                            Deployed Site
-                        </a>
-                    )}
-                    {project.downloadLink && (
-                        <a
-                            href={project.downloadLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="Project-Button"
-                        >
-                            Download Here
-                        </a>
-                    )}
-                </div>
-            </div>
+        <div className="Project-Links">
+          {project.gitHubLink ? (
+            <a href={project.gitHubLink} target="_blank" rel="noopener noreferrer">View Code ↗</a>
+          ) : null}
+          {project.deployedLink ? (
+            <a href={project.deployedLink} target="_blank" rel="noopener noreferrer">Live Site ↗</a>
+          ) : null}
+          {project.downloadLink ? (
+            <a href={project.downloadLink} target="_blank" rel="noopener noreferrer">Download ↗</a>
+          ) : null}
         </div>
-    );
+      </div>
+    </article>
+  );
 }
+
 export default ProjectCard;

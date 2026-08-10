@@ -1,8 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import "./css/App.css";
-import "./LogoLoop.js";
-import LogoLoop from "./LogoLoop";
-import Threads from "./Threads";
 import ProjectCard from "./ProjectCard";
 import emailjs from "emailjs-com";
 
@@ -41,14 +38,16 @@ import resumePDF from "./Russi_Connor_Resume.pdf";
 const Projects = [
   {
     title: "AI-Powered Job Application Tracker",
+    eyebrow: "Applied AI / Full Stack",
     images: [require("./Images/lora/loraAI.png"), require("./Images/lora/loraAI2.png")],
-    technologies: "React, Node.js, Express, JavaScript, HTML, CSS, Gmail API, Fast API, CloudFlare, Uvicorn, LoRA Fine-Tuning",
-    description: "AI-powered full-stack job tracking application that parses real-world Gmail application emails using a fine-tuned LLaMA model with LoRA. The system extracts structured job data from noisy, unstructured text, resolves role variations using similarity-based scoring, and automatically updates application status across the hiring pipeline via a FastAPI microservice integrated with a React and Node.js web app.",
+    technologies: "React, Node.js, Express, JavaScript, HTML, CSS, Gmail API, FastAPI, Cloudflare, Uvicorn, LoRA Fine-Tuning",
+    description: "A job tracker that reads application emails and keeps the hiring pipeline up to date. I fine-tuned a LLaMA model with LoRA to extract structured data from messy inbox content, then connected it to a React and Node.js application through FastAPI.",
     gitHubLink: "https://github.com/ConnorRussi/LoraAI",
     deployedLink: "https://loraai.onrender.com",
   },
   {
     title: "Panda Express POS Ecosystem",
+    eyebrow: "Full Stack / Team Project",
     images: [
       require("./Images/panda/pandaAI.png"),
       require("./Images/panda/cashier.png"),
@@ -58,37 +57,42 @@ const Projects = [
       require("./Images/panda/pandaMain.png"),
       require("./Images/panda/pandaLogin.png"),
     ],
-    description: "Full-stack restaurant management app. Features include a Kiosk with Gemini-powered assistant, cashier workflow, inventory, menu, and employee management, and real-time charts for branch performance, menu, and kitchen tracking. Feel free to explore globally deployed application using these logins: \n \n Manager: username: testMan, password: password. \n EmployeeLogin: username: testUser, password: password.",
+    description: "A restaurant operations platform spanning customer kiosks, cashier tools, kitchen queues, inventory, and branch reporting. I helped connect the React interface to the Node and SQL backend and added a Gemini-assisted ordering flow.",
+    note: "Demo accounts: manager — testMan / password; employee — testUser / password.",
     technologies: "React, Node.js, Express, SQL, JavaScript, HTML, CSS, Gemini API, REST APIs, Agile Development",
     gitHubLink: "https://github.com/CSCE-331-Fall-25/CSCE331_Project_3_Team34",
     deployedLink: "https://csce331-project-3-team34-dueo.onrender.com",
   },
   {
     title: "Saloon Simulator VR Game",
+    eyebrow: "VR / Interaction Design",
     images: [require("./Images/Saloon/VRG1.png"), require("./Images/Saloon/VRG2.png"), require("./Images/Saloon/VRG3.png")],
-    description: "Saloon Simulator is a VR experience for the Oculus Quest, built in Unity with C#. I developed a modular system using classes for interactive objects, enabling new items to be added quickly while maintaining consistent functionality. I applied Human-Computer Interaction principles from *The Design of Everyday Things* by Don Norman to ensure experiences are understandable and intuitive, demonstrating how VR forces designers to carefully consider user experience and interaction. This project is still under development.",
+    description: "An in-progress Oculus Quest game built in Unity and C#. I designed reusable interaction classes so new objects behave consistently, with an emphasis on clear affordances and intuitive VR controls.",
     technologies: "Unity, C#, XR Development, Human-Computer Interaction",
     gitHubLink: "https://github.com/ConnorRussi/Saloon_Simulator",
     // downloadLink: "https://vreducationalgame.example.com",
   },
   {
-    title: "Cards against time (TX Game Jam)",
+    title: "Cards Against Time",
+    eyebrow: "48-Hour Game Jam",
     images: [require("./Images/TXGJ/c1.png"), require("./Images/TXGJ/c2.png"), require("./Images/TXGJ/c3.png"), require("./Images/TXGJ/c4.png"), require("./Images/TXGJ/c5.png")],
-    description: "Developed a single-player game under a strict 48-hour deadline, requiring clear communication and effective collaboration to deliver a complete, playable experience on time. The team intentionally divided work by subsystem, using a front-end and back-end style separation to enable parallel development while minimizing merge conflicts. Responsibilities were clearly defined early, allowing me and my partner to work independently before integrating components into a cohesive final build within the limited timeframe.",
+    description: "A complete single-player game made with one teammate during the 48-hour Texas Game Jam. We split the work by system, worked in parallel, and integrated the pieces into a playable build before the deadline.",
     technologies: "Unity, C#, Game Development, Agile Development",
     gitHubLink: "https://github.com/1RlyBadDay/TXGJ_repo",
     deployedLink: "https://thecripple1.itch.io/cards-against-times",
   },
   {
-    title: "Single Core Y-86 Sequential architecture CPU",
+    title: "Single-Core Y86 CPU",
+    eyebrow: "Computer Architecture",
     images: [require("./Images/Cpu/cpu1.png"), require("./Images/Cpu/cpu2.png"), require("./Images/Cpu/cpu3.png")],
-    description: "Built the Fetch, Execute, and PC update stages of a Y-86 CPU while collaborating on the Memory and Decode stages. Designed test cases by breaking complex operations into simple problems, ensuring correctness and supporting smooth instruction conversion into Y-86. Focused on modular design and clear, maintainable architecture throughout the project.",
+    description: "A sequential Y86 processor built from the instruction set up. I owned the fetch, execute, and program-counter stages, collaborated on memory and decode, and wrote focused tests for each instruction path.",
     technologies: "Computer Architecture, WaveDrom, Y-86 Instruction Set",
   },
   {
     title: "Sherwood",
+    eyebrow: "Unity / Early Team Project",
     images: [require("./Images/sherwood/s1.png"), require("./Images/sherwood/s2.png"), require("./Images/sherwood/s3.png"), require("./Images/sherwood/s4.png")],
-    description: "Sherwood started as a high school project to experiment with Unity and C#, eventually growing into a 3D prototype published on itch.io. Leading a small team, I directed the development lifecycle—delegating tasks, designing levels, and setting up bug reporting workflows. This project gave me my first real look at managing 'scope creep' and the importance of a disciplined workflow. To keep our development stable, I implemented Git branching strategies to handle team collaboration and integration as the project scaled.",
+    description: "My first substantial Unity project: a 3D prototype that grew from an experiment into a small team release. I designed levels, divided work, introduced a Git branching workflow, and learned firsthand how quickly scope can outrun a project.",
     technologies: "Unity, C#, 3D Game Development, Git",
     gitHubLink: "https://github.com/ConnorRussi/RPG-grapple",
     deployedLink: "https://thecripple1.itch.io/sherwood",
@@ -98,25 +102,25 @@ const Projects = [
 const professionalExperience = {
   title: "Gen-AI Platform Engineer Intern",
   company: "Halliburton",
-  duration: "May 2026 - August 2026",
+  duration: "May 2026 — August 2026",
   logo: halliburtonLogo,
   summary:
-    "Built on Halliburton's internal Gen-AI platform, helping turn company knowledge, developer workflows, and generated code into agentic systems that could be evaluated, trusted, and improved over time.",
+    "I worked on Halliburton's internal Gen-AI platform, focusing on the less flashy parts that make agents useful in practice: reliable retrieval, measured quality, efficient context, and safe code execution.",
   highlights: [
     {
-      title: "Agentic Platform Work",
+      title: "Agent Architecture",
       detail:
-        "Designed graph-based agent behavior for planning, evidence gathering, tool calls, and grounded technical responses across internal engineering use cases.",
+        "Designed graph-based flows for planning, context retrieval, tool calls, and grounded technical answers across internal engineering use cases.",
     },
     {
-      title: "Measured AI Quality",
+      title: "Evaluation",
       detail:
-        "Created evaluation loops that compared accuracy, retrieval quality, latency, and token cost so changes could be judged by data rather than guesswork.",
+        "Built regression tests around accuracy, retrieval quality, latency, and token cost so each iteration had a measurable result.",
     },
     {
-      title: "Safer Generated Code",
+      title: "Code Safety",
       detail:
-        "Built validation steps around generated code, combining LLM-assisted cleanup with sandboxed execution before code reached users.",
+        "Added sanitization and sandboxed validation before AI-generated code could be executed or returned to developers.",
     },
   ],
   metrics: [
@@ -132,44 +136,44 @@ const leadershipActivities = [
   {
     title: "Kids Room Lead",
     company: "Grace Bible Church",
-    description: "Led and supervised children of varying age groups during church services and events, ensuring a safe, organized, and engaging environment. Coordinated activities with other volunteers, communicated clearly with parents and leadership, and adapted to dynamic situations while maintaining a positive and structured experience for everyone involved.",
-    duration: "Sep 2025-Present",
+    description: "Coordinate volunteers and lead a safe, welcoming kids room during services and church events.",
+    duration: "Sep 2025 — Present",
     image: require("./Images/exp/grace.PNG"), // Replace with your image or a placeholder
   },
   {
     title: "Head Fleet Mechanic (Mech Pot)",
     company: "Student Bonfire",
-    description: "Led maintenance and repair operations for a fleet of vehicles critical to large-scale construction and logistics efforts. Coordinated repairs to minimize downtime, communicated technical issues to non-technical clients, and vehicles were operational under time-sensitive conditions. Developed strong leadership, problem-solving, and cross-functional communication skills.",
-    duration: "Jan 2025-Nov 2025",
-    image: require("./Images/exp/bonfire.png"), // Replace with your image or a placeholder
+    description: "Led repairs and preventative maintenance for the vehicle fleet supporting Student Bonfire construction and logistics.",
+    duration: "Jan 2025 — Nov 2025",
+    image: require("./Images/exp/bonfire.png"),
   },
   {
     title: "Male Counselor",
     company: "Sambica",
-    description: "Supervised and mentored groups of 10–12 campers ranging from 2nd grade through 12th grade in a fast-paced, dynamic camp environment. Collaborated with fellow counselors to plan and execute daily activities, prioritize safety, and foster a positive, inclusive atmosphere. Built strong relationships with campers while providing mentorship and encouragement focused on personal growth and responsibility.",
-    duration: "Summers 2024-2025",
-    image: require("./Images/exp/sambica.PNG"), // Replace with your image or a placeholder
+    description: "Mentored groups of 10–12 campers, ran daily activities, and worked with the counseling team to keep camp safe and inclusive.",
+    duration: "Summers 2024 — 2025",
+    image: require("./Images/exp/sambica.PNG"),
   },
   {
     title: "Head Supervisor (Yellow Pot)",
     company: "Off Campus Aggies",
-    description: "Oversaw a cross-functional team of 50+ students on an active construction site, ensuring safety, efficiency, and coordination across daily operations. Managed large-scale tasks including cutting and transporting 40+ trees per day, tool maintenance, recruitment, fundraising, and event coordination. Served as a liaison between crews and upper leadership, developing strong organizational and leadership skills in a high pressure environment.",
-    duration: "Jan 2024-Jan 2025",
+    description: "Supervised 50+ students on an active construction site and coordinated safety, tools, recruitment, fundraising, and daily work.",
+    duration: "Jan 2024 — Jan 2025",
     image: require("./Images/exp/oca.png"), // Replace with your image or a placeholder
   },
   
   {
     title: "Guest Advocate",
     company: "Target",
-    description: "Delivered consistent, high-quality customer service in a fast-paced retail environment. Resolved guest concerns efficiently, communicated effectively with team members, and adapted to shifting needs of the store. Developed strong interpersonal communication skills and a customer-focused mindset.",
-    duration: "Sep 2021-Dec 2023",
+    description: "Handled guest issues, front-of-store operations, and shifting priorities in a high-volume retail environment.",
+    duration: "Sep 2021 — Dec 2023",
     image: require("./Images/exp/target.png"), // Replace with your image or a placeholder
   },
   {
     title: "Owner",
     company: "Russi Mowers",
-    description: "Founded and operated a small lawn care business, managing client relationships, scheduling, pricing, and service execution. Maintained high service quality while balancing operational responsibilities, customer communication, and business growth. Gained early experience in entrepreneurship, accountability, and self-directed problem solving.",
-    duration: "Dec 2016-Aug 2023",
+    description: "Started and ran a lawn-care business, including scheduling, pricing, client communication, and the work itself.",
+    duration: "Dec 2016 — Aug 2023",
     image: require("./Images/exp/rm.png"), // Replace with your image or a placeholder
   }
 ];
@@ -294,183 +298,259 @@ const technologies = [
 ];
 
 function App() {
-  const techLogos = technologies.map(tech => ({
-    src: tech.img,
-    alt: tech.name,
-  }));
-
+  const [formStatus, setFormStatus] = useState("");
+  const [isSending, setIsSending] = useState(false);
   const serviceID = process.env.REACT_APP_EJ_SERVICE_ID;
   const templateID = process.env.REACT_APP_EJ_TEMPLATE_ID;
   const publicKey = process.env.REACT_APP_EJ_KEY;
-  const sendEmail = (e) => {
+
+  const sendEmail = async (e) => {
     e.preventDefault();
-    if(!serviceID || !templateID || !publicKey) {
+    if (!serviceID || !templateID || !publicKey) {
       console.error("EmailJS environment variables are not set properly.");
-      alert("Email service is currently unavailable. Please try again later.");
-      console.log(serviceID, templateID, publicKey);
+      setFormStatus("The email form is unavailable right now. Please try again later.");
       return;
     }
-    emailjs.sendForm(
-      serviceID, // Replace with your EmailJS service ID
-      templateID, // Replace with your EmailJS template ID
-      e.target,
-      publicKey// Replace with your EmailJS user/public key
-    )
-    .then(
-      (result) => {
-        console.log("Email successfully sent!", result.text);
-        alert("Your message has been sent successfully!");
-      },
-      (error) => {
-        console.error("Error sending email:", error.text);
-        alert("There was an error sending your message. Please try again later.");
-      }
-    );
 
-    e.target.reset();
+    const form = e.currentTarget;
+    setIsSending(true);
+    setFormStatus("");
+
+    try {
+      await emailjs.sendForm(serviceID, templateID, form, publicKey);
+      form.reset();
+      setFormStatus("Thanks — your message has been sent.");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setFormStatus("Your message could not be sent. Please try again.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
     <div className="App">
-        <Threads color={[1, 1, 1]} amplitude={3} distance={0} enableMouseInteraction={true} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0 }} />
-
-      <section className="App-Navbar">
-        <nav>
+      <a className="Skip-Link" href="#main-content">Skip to content</a>
+      <header className="App-Navbar">
+        <nav className="Navbar-Inner" aria-label="Primary navigation">
+          <a className="Nav-Mark" href="#home" aria-label="Connor Russi, home">CR</a>
           <ul className="Nav-Links">
-            <li><a href="#about">About Me</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#projects">Work</a></li>
             <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-            <li><a href={resumePDF} target="_blank" rel="noopener noreferrer" className="Resume-Button">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href={resumePDF} target="_blank" rel="noopener noreferrer">Résumé ↗</a></li>
           </ul>
         </nav>
-      </section>
-      {/* main welcome screen */}
-      <section className="Section-Heading" id="home">
-        <div className="Section-Heading-Content">
-          <h1>Connor Russi</h1>
-          <p>
-            Computer Science student at Texas A&M
-            <br />
-            Aspiring Software Engineer
-          </p>
-        </div>
-      </section>
+      </header>
 
-      {/* about me */}
-      <section className="Section-About AboutMe" id="about">
-        <div className="Section-TopHeading"><h2>About Me</h2></div>
-        <div className="About-Content">
-          <p>
-            I’m a Computer Science student at Texas A&M pursuing a minor in Business.
-            I enjoy building full-stack applications and learning technologies by applying them to real problems.
-            Recently, I’ve been experimenting with AI techniques like LoRA fine-tuning to better understand how modern AI systems are trained and integrated into software.
-            I’m currently seeking Software Engineering internship opportunities for Summer 2026.
-          </p>
-        </div>
-        <LogoLoop logos={techLogos} speed={50} direction="left" />
-
-      </section>
-
-      {/* Professional experience */}
-      <section className="Section-Experience" id="experience">
-        <div className="Section-TopHeading"><h2>Professional Experience</h2></div>
-        <article className="Professional-Experience-Card">
-          <div className="Professional-Experience-Header">
-            <div className="Professional-Experience-LogoFrame">
-              <img
-                src={professionalExperience.logo}
-                alt={`${professionalExperience.company} logo`}
-                className="Professional-Experience-Logo"
-              />
-            </div>
-            <div className="Experience-TitleGroup">
-              <h3 className="Experience-Title">{professionalExperience.title}</h3>
-              <span className="Professional-Experience-Company">{professionalExperience.company}</span>
-            </div>
-            <span className="Experience-Duration">{professionalExperience.duration}</span>
-          </div>
-          <p className="Professional-Experience-Summary">{professionalExperience.summary}</p>
-          <div className="Professional-Experience-Metrics" aria-label="Internship impact metrics">
-            {professionalExperience.metrics.map((metric) => (
-              <div className="Professional-Experience-Metric" key={metric.label}>
-                <span>{metric.value}</span>
-                <small>{metric.label}</small>
+      <main id="main-content">
+        <section className="Section-Heading" id="home">
+          <div className="Page-Shell Hero-Layout">
+            <div className="Hero-Copy">
+              <p className="Eyebrow">Computer Science · Applied AI · Full Stack</p>
+              <h1>Connor Russi</h1>
+              <p className="Hero-Statement">
+                Gen-AI platform engineer and Texas A&amp;M student building practical software across AI, full-stack systems, and interactive experiences.
+              </p>
+              <div className="Hero-Actions">
+                <a className="Primary-Link" href="#projects">See My Work</a>
+                <a className="Text-Link" href="https://github.com/ConnorRussi" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               </div>
-            ))}
-          </div>
-          <div className="Professional-Experience-Highlights">
-            {professionalExperience.highlights.map((highlight) => (
-              <div className="Professional-Experience-Highlight" key={highlight.title}>
-                <h4>{highlight.title}</h4>
-                <p>{highlight.detail}</p>
-              </div>
-            ))}
-          </div>
-          <div className="Professional-Experience-Technologies" aria-label="Technologies used">
-            {professionalExperience.technologies.map((technology) => (
-              <span key={technology}>{technology}</span>
-            ))}
-          </div>
-        </article>
-      </section>
-
-      {/* Projects */}
-      
-      <section className="Section-Projects" id="projects">
-        <div className="Section-TopHeading"><h2>Projects</h2></div>
-        <div className = "Projects">
-          {Projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
-        </div>
-     
-      </section>
-
-      {/* Leadership and activities */}
-      <section className="Section-Experience" id="leadership">
-        <div className="Section-TopHeading"><h2>Leadership &amp; Activities</h2></div>
-        <div className = "Experience">
-          {leadershipActivities.map((exp) => (
-            <div className="Experience-Card" key={`${exp.company}-${exp.title}`}>
-              <img
-                src={exp.image}
-                alt={exp.title}
-                className="Experience-Image"
-              />
-              <div className="Experience-Content">
-                <div className="Experience-Header">
-                  <div className="Experience-TitleGroup">
-                    <span className="Experience-Title">{exp.title}</span>
-                    <span className="Experience-Company">{exp.company}</span>
-                  </div>
-                  <span className="Experience-Duration">{exp.duration}</span>
+            </div>
+            <aside className="Hero-Aside" aria-label="Education and recent experience">
+              <p className="Hero-Aside-Heading">At a Glance</p>
+              <dl className="Recruiter-Snapshot">
+                <div>
+                  <dt>Degree</dt>
+                  <dd>B.S. Computer Science</dd>
                 </div>
-                <div className="Experience-Description">{exp.description}</div>
-              </div>
+                <div>
+                  <dt>School</dt>
+                  <dd>Texas A&amp;M University</dd>
+                </div>
+                <div>
+                  <dt>Minor</dt>
+                  <dd>Business</dd>
+                </div>
+                <div>
+                  <dt>Recent Role</dt>
+                  <dd>Gen-AI Platform Engineer Intern</dd>
+                </div>
+                <div>
+                  <dt>Company</dt>
+                  <dd>Halliburton · Summer 2026</dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </section>
+
+        <section className="Content-Section" id="about">
+          <div className="Page-Shell">
+            <div className="Section-Intro">
+              <span className="Section-Number">01</span>
+              <h2>About</h2>
             </div>
-          ))}
+            <div className="About-Grid">
+              <p className="About-Lead">
+                I’m a Computer Science student at Texas A&amp;M with a minor in Business. I like projects where the engineering has a visible effect: less waiting, fewer manual steps, or a better interaction.
+              </p>
+              <p>
+                My recent work spans internal AI platforms, full-stack applications, model fine-tuning, and Unity. I care about understanding the system beneath the demo and measuring whether it actually improved.
+              </p>
+            </div>
+            <div className="Technology-Heading">
+              <h3>Technical Toolkit</h3>
+              <p>Languages, frameworks, platforms, and AI tooling I’ve used in real projects.</p>
+            </div>
+            <ul className="Technology-Strip" aria-label="Technologies I work with">
+              {technologies.map((technology) => (
+                <li key={technology.name}>
+                  <img src={technology.img} alt="" width="32" height="32" loading="lazy" />
+                  <span>{technology.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="Content-Section" id="experience">
+          <div className="Page-Shell">
+            <div className="Section-Intro">
+              <span className="Section-Number">02</span>
+              <h2>Experience</h2>
+            </div>
+            <article className="Professional-Experience-Card">
+              <header className="Professional-Experience-Header">
+                <img
+                  src={professionalExperience.logo}
+                  alt={`${professionalExperience.company} logo`}
+                  className="Professional-Experience-Logo"
+                  width="176"
+                  height="52"
+                />
+                <div className="Experience-TitleGroup">
+                  <h3>{professionalExperience.title}</h3>
+                  <p className="Experience-Company">{professionalExperience.company}</p>
+                </div>
+                <p className="Experience-Duration">{professionalExperience.duration}</p>
+              </header>
+
+              <div className="Experience-Body">
+                <p className="Professional-Experience-Summary">{professionalExperience.summary}</p>
+                <dl className="Professional-Experience-Metrics">
+                  {professionalExperience.metrics.map((metric) => (
+                    <div key={metric.label}>
+                      <dt>{metric.value}</dt>
+                      <dd>{metric.label}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <ul className="Professional-Experience-Highlights">
+                  {professionalExperience.highlights.map((highlight) => (
+                    <li key={highlight.title}>
+                      <h4>{highlight.title}</h4>
+                      <p>{highlight.detail}</p>
+                    </li>
+                  ))}
+                </ul>
+                <ul className="Inline-Technologies" aria-label="Technologies used">
+                  {professionalExperience.technologies.map((technology) => (
+                    <li key={technology}>{technology}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="Content-Section" id="projects">
+          <div className="Page-Shell">
+            <div className="Section-Intro Section-Intro-WithCopy">
+              <div>
+                <span className="Section-Number">03</span>
+                <h2>Selected Work</h2>
+              </div>
+              <p>A mix of production-minded software, class projects, and experiments that taught me something worth keeping.</p>
+            </div>
+            <div className="Projects">
+              {Projects.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="Content-Section" id="leadership">
+          <div className="Page-Shell">
+            <div className="Section-Intro">
+              <span className="Section-Number">04</span>
+              <h2>Leadership &amp; Activities</h2>
+            </div>
+            <div className="Experience">
+              {leadershipActivities.map((experience) => (
+                <article className="Experience-Row" key={`${experience.company}-${experience.title}`}>
+                  <img
+                    src={experience.image}
+                    alt=""
+                    className="Experience-Image"
+                    width="96"
+                    height="64"
+                    loading="lazy"
+                  />
+                  <div className="Experience-Role">
+                    <h3>{experience.title}</h3>
+                    <p className="Experience-Company">{experience.company}</p>
+                  </div>
+                  <p className="Experience-Description">{experience.description}</p>
+                  <p className="Experience-Duration">{experience.duration}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="Content-Section Contact-Section" id="contact">
+          <div className="Page-Shell Contact-Layout">
+            <div>
+              <div className="Section-Intro">
+                <span className="Section-Number">05</span>
+                <h2>Let’s Talk</h2>
+              </div>
+              <p className="Contact-Intro">Have a role, project, or interesting technical problem in mind? Send me a note.</p>
+            </div>
+            <form className="Contact-Form" onSubmit={sendEmail}>
+              <div className="Form-Field">
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" autoComplete="name" placeholder="Your name…" required />
+              </div>
+              <div className="Form-Field">
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" autoComplete="email" spellCheck="false" placeholder="you@example.com…" required />
+              </div>
+              <div className="Form-Field">
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" autoComplete="off" placeholder="What would you like to discuss?…" required></textarea>
+              </div>
+              <div className="Form-Actions">
+                <button type="submit" className="Contact-Button" disabled={isSending}>
+                  {isSending ? "Sending…" : "Send Message"}
+                </button>
+                <p className="Form-Status" aria-live="polite">{formStatus}</p>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer className="Site-Footer">
+        <div className="Page-Shell">
+          <p>Connor Russi · Software Engineer</p>
+          <a href="#home">Back to top ↑</a>
         </div>
-      </section>
-
-      {/* contact me */}
-      <section className="Section-Contact" id="contact">
-        <div className="Section-TopHeading"><h2>Contact Me</h2></div>
-        <form className="Contact-Form" onSubmit={sendEmail}>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder="Your Name" required />
-
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="Your Email" required />
-
-          <label htmlFor="message">Message:</label>
-          <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-
-          <button type="submit" className="Contact-Button">Send Message</button>
-        </form>
-      </section>
-
+      </footer>
     </div>
   );
 }
